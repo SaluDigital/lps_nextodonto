@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
@@ -194,22 +194,10 @@ section{position:relative}
   background:#FFF5E8;border:1px solid #F3D9A8;color:#7A4B10;font-size:.88rem;line-height:1.45;max-width:520px;
 }
 .hero-notice svg{flex:0 0 18px;margin-top:1px}
-.hero-visual{position:relative;aspect-ratio:9/14;max-width:360px;margin:0 auto;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);transform:translateZ(0)}
-.hero-visual .mute-toggle{
-  position:absolute;bottom:16px;right:16px;z-index:10;
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(0,0,0,0.5);color:#fff;
-  display:grid;place-items:center;cursor:pointer;
-  backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.2);
-  transition:background .2s ease;
-}
-.hero-visual .mute-toggle:hover{background:rgba(0,0,0,0.7)}
-.hero-visual .mute-toggle svg{width:20px;height:20px}
-
-.hero-visual img,
-.hero-visual video{width:100%;height:100%;object-fit:cover}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);transform:translateZ(0)}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
 .hero-frame{
-  position:relative;width:fit-content;margin:0 auto;border-radius:32px;padding:14px;
+  position:relative;border-radius:32px;padding:14px;
   background:linear-gradient(135deg,rgba(34,183,217,0.35),rgba(11,95,255,0.25));
   box-shadow:var(--shadow-glow);
 }
@@ -218,10 +206,28 @@ section{position:relative}
   background:linear-gradient(135deg,rgba(255,255,255,0.6),rgba(255,255,255,0));
   pointer-events:none;
 }
+.hero-float{
+  position:absolute;background:#fff;border:1px solid var(--next-gray-100);
+  border-radius:18px;padding:12px 14px;box-shadow:var(--shadow-md);
+  display:flex;gap:12px;align-items:center;font-size:.9rem;font-weight:600;
+  animation:float 6s ease-in-out infinite;
+}
+.hero-float .ico{
+  width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#E6F4FB,#D5EBFB);color:var(--next-blue-deep);
+}
+.hero-float small{display:block;font-weight:500;color:var(--next-gray-500);font-size:.78rem;margin-top:2px}
+.hero-float.f1{top:6%;left:-6%;animation-delay:-1s}
+.hero-float.f2{bottom:18%;right:-8%;animation-delay:-3s}
+.hero-float.f3{bottom:-2%;left:10%;animation-delay:-5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
 @media (max-width:900px){
   .hero{padding:120px 0 56px}
   .hero-grid{grid-template-columns:1fr;gap:36px}
-  .hero-visual{aspect-ratio:9/16;max-width:430px;margin:0 auto}
+  .hero-visual{aspect-ratio:4/3.4;max-width:520px;margin:0 auto}
+  .hero-float.f1{left:-2%}
+  .hero-float.f2{right:-2%}
 }
 
 /* ─── Quick ID cards ─── */
@@ -245,11 +251,7 @@ section{position:relative}
 .id-card p{color:var(--next-gray-700);font-size:.96rem}
 .id-cta{display:flex;justify-content:center;margin-top:40px}
 @media (max-width:900px){.id-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){
-  .id-grid{grid-template-columns:1fr}
-  .id-card{text-align:center}
-  .id-card .ico{margin:0 auto 18px}
-}
+@media (max-width:520px){.id-grid{grid-template-columns:1fr}}
 
 /* ─── Pain section ─── */
 .pain{position:relative}
@@ -258,28 +260,14 @@ section{position:relative}
   border:1px solid #CFE3F2;border-radius:var(--radius-xl);
   padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;position:relative;overflow:hidden;
 }
-.pain-card .pic-stack{position:relative;min-height:520px}
-.pain-card .pic{
-  position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-md);
-  border:8px solid rgba(255,255,255,0.82);background:#fff;
-}
-.pain-card .pic img{width:100%;height:100%;object-fit:cover;display:block}
-.pain-card .pic-main{width:min(100%,420px);aspect-ratio:4/5;margin-left:auto}
-.pain-card .pic-secondary{
-  position:absolute;right:-10px;bottom:18px;width:min(58%,220px);aspect-ratio:4/4.8;
-  box-shadow:0 24px 50px -28px rgba(9,37,64,0.5);
-}
+.pain-card .pic{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/5}
+.pain-card .pic img{width:100%;height:100%;object-fit:cover}
 .pain-card h2 mark{
   background:linear-gradient(180deg,transparent 60%, rgba(34,183,217,0.45) 60%);
   color:inherit;padding:0 4px;
 }
 .pain-card p{color:var(--next-gray-700);margin-top:18px;font-size:1.05rem}
-@media (max-width:900px){
-  .pain-card{padding:36px 24px;grid-template-columns:1fr;gap:28px}
-  .pain-card .pic-stack{min-height:0;max-width:420px;margin:0 auto;padding-bottom:92px}
-  .pain-card .pic-main{margin:0 auto}
-  .pain-card .pic-secondary{right:0;bottom:0}
-}
+@media (max-width:900px){.pain-card{padding:36px 24px;grid-template-columns:1fr;gap:28px}}
 
 /* ─── Protocol dark feature ─── */
 .protocol{
@@ -293,8 +281,8 @@ section{position:relative}
 }
 .protocol .container{position:relative;z-index:1}
 .protocol .eyebrow{background:rgba(255,255,255,0.1);color:#BFE7F2;border-color:rgba(255,255,255,0.18)}
-.protocol h2{color:#fff;max-width:720px;margin-left:auto;margin-right:auto;text-align:center}
-.protocol p.lede{color:rgba(234,244,251,0.84);margin-top:18px;font-size:1.04rem;max-width:620px;margin-left:auto;margin-right:auto;text-align:center}
+.protocol h2{color:#fff;max-width:720px}
+.protocol p.lede{color:rgba(234,244,251,0.84);margin-top:18px;font-size:1.04rem;max-width:620px}
 .protocol-grid{display:grid;grid-template-columns:.98fr 1.02fr;gap:56px;align-items:start}
 .protocol-copy{display:flex;flex-direction:column;justify-content:flex-start}
 .protocol-copy .section-head{margin:0 0 24px;max-width:720px;text-align:left}
@@ -314,7 +302,7 @@ section{position:relative}
 .benefit span{font-weight:500;color:#fff;font-size:.98rem}
 .protocol-visual{
   border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,0.5);
-  border:1px solid rgba(255,255,255,0.12);aspect-ratio:16/9;max-width:600px;justify-self:center;width:100%;
+  border:1px solid rgba(255,255,255,0.12);aspect-ratio:9/16;max-width:420px;justify-self:center;width:100%;
   background:rgba(11,42,74,0.36);
 }
 .protocol-visual img,.protocol-visual video{width:100%;height:100%;object-fit:cover}
@@ -326,59 +314,36 @@ section{position:relative}
 }
 
 /* ─── Treatment table ─── */
-.treatment-types{
-  position:relative;
-  background:
-    radial-gradient(circle at top right, rgba(34,183,217,0.12), transparent 26%),
-    linear-gradient(180deg,#F7FBFE 0%,#EEF6FB 100%);
-}
-.treatment-types::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.45),rgba(255,255,255,0));
-  opacity:.55;pointer-events:none;
-}
-.treatment-types .container{position:relative;z-index:1}
 .tt-table{
-  position:relative;background:rgba(255,255,255,0.94);border:1px solid rgba(200,221,238,0.9);border-radius:30px;overflow:hidden;
-  box-shadow:0 28px 70px -36px rgba(17,63,109,0.35), 0 10px 30px -22px rgba(34,183,217,0.25);
-  backdrop-filter:blur(10px);
-}
-.tt-table::before{
-  content:"";position:absolute;inset:0 0 auto 0;height:1px;
-  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.85),rgba(255,255,255,0));
-  z-index:1;
+  background:#fff;border:1px solid var(--next-gray-100);border-radius:24px;overflow:hidden;
+  box-shadow:var(--shadow-sm);
 }
 .tt-row{
   display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
-  border-top:1px solid rgba(207,227,242,0.9);
+  border-top:1px solid var(--next-gray-100);
 }
 .tt-row:first-child{border-top:0}
 .tt-row.head{
-  background:linear-gradient(135deg,#0B2A4A,#123F6F 58%,#1A5F98);color:#fff;
-  font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  background:linear-gradient(135deg,#0B2A4A,#0F3A66);color:#fff;
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
 }
-.tt-row.head .tt-cell{padding:20px 30px;color:rgba(255,255,255,0.92)}
-.tt-cell{padding:24px 30px;display:flex;align-items:center;gap:16px;color:var(--next-ink);font-weight:500}
-.tt-cell.r{
-  border-left:1px solid rgba(207,227,242,0.9);color:var(--next-blue-deep);font-weight:700;
-  background:linear-gradient(90deg,rgba(225,243,252,0.36),rgba(255,255,255,0));
-}
+.tt-row.head .tt-cell{padding:18px 28px}
+.tt-cell{padding:22px 28px;display:flex;align-items:center;gap:14px;color:var(--next-ink);font-weight:500}
+.tt-cell.r{border-left:1px solid var(--next-gray-100);color:var(--next-blue-deep);font-weight:700}
 .tt-cell .num{
-  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 34px;
-  background:linear-gradient(135deg,#F1FAFF,#CFEAFF);color:var(--next-blue-deep);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.85), 0 10px 18px -14px rgba(11,95,255,0.4);
-  font-size:.84rem;font-weight:800;
+  width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:0 0 30px;
+  background:linear-gradient(135deg,#E6F4FB,#D5EBFB);color:var(--next-blue-deep);
+  font-size:.82rem;font-weight:700;
 }
-.tt-row:not(.head){transition:background .3s ease}
-.tt-row:not(.head):hover{background:linear-gradient(90deg,rgba(248,251,253,0.96),rgba(239,248,253,0.98))}
-.tt-note{margin-top:20px;text-align:center;color:var(--next-gray-500);font-size:.94rem}
+.tt-row:not(.head):hover{background:#F8FBFD}
+.tt-note{margin-top:18px;text-align:center;color:var(--next-gray-500);font-size:.94rem}
 @media (max-width:720px){
   .tt-row{grid-template-columns:1fr;gap:0}
   .tt-row.head{display:none}
-  .tt-row{border-top:0;margin-bottom:14px;border:1px solid rgba(207,227,242,0.9);border-radius:20px;background:#fff;box-shadow:var(--shadow-sm)}
+  .tt-row{border-top:0;margin-bottom:14px;border:1px solid var(--next-gray-100);border-radius:18px;background:#fff;box-shadow:var(--shadow-sm)}
   .tt-cell{padding:16px 20px}
   .tt-cell.l::before{content:"Situação";display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--next-gray-500);margin-bottom:4px}
-  .tt-cell.r{border-left:0;border-top:1px dashed rgba(207,227,242,0.9);flex-direction:column;align-items:flex-start;gap:4px;background:transparent}
+  .tt-cell.r{border-left:0;border-top:1px dashed var(--next-gray-100);flex-direction:column;align-items:flex-start;gap:4px}
   .tt-cell.r::before{content:"Possível indicação";font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--next-gray-500)}
 }
 
@@ -427,11 +392,7 @@ section{position:relative}
 .why-card h3{font-size:1.05rem}
 .why-card p{color:var(--next-gray-700);font-size:.92rem;margin-top:6px}
 @media (max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){
-  .why-grid{grid-template-columns:1fr}
-  .why-card{text-align:center}
-  .why-card .ico{margin:0 auto 18px}
-}
+@media (max-width:560px){.why-grid{grid-template-columns:1fr}}
 
 /* ─── Testimonials ─── */
 .tm-track{
@@ -444,7 +405,6 @@ section{position:relative}
 }
 .tm-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .tm-card .quote{position:absolute;top:18px;right:22px;font-size:3rem;line-height:1;color:rgba(11,95,255,0.12);font-family:Georgia,serif;font-weight:700}
-.social-proof-stars{margin-top:14px;font-size:1.5rem;line-height:1;color:#F5B400;letter-spacing:.12em}
 .stars{display:flex;gap:3px;color:#F5B400}
 .stars svg{width:18px;height:18px}
 .tm-card p{color:var(--next-gray-700);font-size:.98rem;line-height:1.6}
@@ -625,15 +585,15 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
   .btn svg{flex:0 0 auto}
   .btn-pulse::after{display:none}
 
-  .hero{padding:92px 0 38px}
-  .hero h1{margin-top:14px}
-  .hero-grid{gap:22px}
-  .hero .lede{font-size:.96rem;line-height:1.5;margin-top:14px}
-  .hero .small{font-size:.82rem;line-height:1.45;margin-top:12px}
-  .hero-ctas{margin-top:18px}
-  .hero-notice{display:none}
-  .hero-frame{margin:0 auto;border-radius:22px;padding:8px}
-  .hero-visual{aspect-ratio:9/12.6;max-width:300px;border-radius:18px}
+  .hero{padding:102px 0 52px}
+  .hero-grid{gap:30px}
+  .hero .lede{font-size:1rem;line-height:1.58}
+  .hero .small{font-size:.86rem}
+  .hero-ctas{margin-top:24px}
+  .hero-notice{display:flex;font-size:.84rem}
+  .hero-frame{border-radius:24px;padding:10px}
+  .hero-visual{aspect-ratio:4/4.4;border-radius:20px}
+  .hero-float{display:none}
 
   .id-card{padding:22px}
   .id-cta{margin-top:28px}
@@ -768,15 +728,16 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
     <div class="hero-grid">
       <div class="hero-text">
         <span class="eyebrow reveal"><span class="dot"></span>Implantes dentários em Ferraz de Vasconcelos</span>
-        <h1 class="reveal delay-1">Implantes dentários e prótese protocolo</h1>
-        <p class="lede reveal delay-2">Recupere a segurança para mastigar, sorrir e falar com um tratamento planejado para substituir um, vários ou todos os dentes.</p>
+        <h1 class="reveal delay-1">Implantes dentários e prótese protocolo em Ferraz de Vasconcelos</h1>
+        <p class="lede reveal delay-2">Recupere a segurança para mastigar, sorrir e falar com um planejamento personalizado para substituir um, vários ou todos os dentes.</p>
+        <p class="lede reveal delay-3" style="font-size:1rem;color:var(--next-gray-700)">Na NextOdonto, você recebe uma avaliação individual para entender qual solução pode ser indicada para o seu caso: implante unitário, implantes múltiplos, prótese protocolo ou reabilitação oral.</p>
         <div class="hero-ctas reveal delay-4">
           <a href="https://api.whatsapp.com/send?phone=5511940074275&text=Ol%C3%A1,%20vim%20do%20Google%20e%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Implante%20Dent%C3%A1rio" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg btn-pulse">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A10.05 10.05 0 0 0 12 2C6.5 2 2.05 6.45 2.05 11.95c0 1.76.46 3.49 1.34 5.01L2 22l5.18-1.36a10 10 0 0 0 4.81 1.23h.01c5.5 0 9.95-4.45 9.95-9.95 0-2.65-1.04-5.15-2.9-7.01zM12 20.16h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.07.81.82-2.99-.2-.31a8.2 8.2 0 0 1-1.27-4.39c0-4.55 3.7-8.25 8.25-8.25 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.25-8.25 8.25z"/></svg>
-            Quero avaliar meu caso pelo WhatsApp
+            Agendar avaliação pelo WhatsApp
           </a>
         </div>
-        <p class="small reveal delay-4">Atendimento particular em Ferraz de Vasconcelos<br/>Condições de pagamento personalizadas após avaliação</p>
+        <p class="small reveal delay-4">Atendimento em Ferraz de Vasconcelos&nbsp;&nbsp;|&nbsp;&nbsp;Condições de pagamento personalizadas</p>
         <div class="hero-notice reveal delay-4" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <span><strong>Aviso:</strong> Não realizamos atendimento por convênios ou plano odontológico.</span>
@@ -785,88 +746,22 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
       <div class="hero-media reveal delay-2 reveal-blur">
         <div class="hero-frame">
           <div class="hero-visual">
-            <video autoplay muted loop playsinline preload="metadata" id="heroVideo" poster="assets/hero.jpg" aria-label="Vídeo de implantes dentários na NextOdonto">
-              <source src="assets/hero-implantes.mp4" type="video/mp4"/>
-            </video>
-            <button class="mute-toggle" id="muteToggleHero" aria-label="Ativar som">
-              <svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
+            <img src="assets/hero.jpg" alt="Paciente recebendo atendimento na NextOdonto" loading="eager"/>
+          </div>
+          <div class="hero-float f1" aria-hidden="true">
+            <div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div>Planejamento personalizado<small>após avaliação clínica</small></div>
+          </div>
+          <div class="hero-float f2" aria-hidden="true">
+            <div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div>Atendimento humanizado<small>em Ferraz de Vasconcelos</small></div>
+          </div>
+          <div class="hero-float f3" aria-hidden="true">
+            <div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+            <div>Condições personalizadas<small>de pagamento</small></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============== TESTIMONIALS ============== -->
-<section class="section" id="depoimentos">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Depoimentos</span>
-      <h2>Pacientes que confiam na NextOdonto</h2>
-      <div class="social-proof-stars" aria-label="5 estrelas">★★★★★</div>
-      <p>Comentários reais publicados por pacientes da clínica.</p>
-    </div>
-    <div class="tm-track">
-      <article class="tm-card reveal">
-        <span class="quote" aria-hidden="true">“</span>
-        <div class="stars" aria-label="5 de 5 estrelas">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-        </div>
-        <p>“Encontrei a Next Odonto no Google, consegui contato com eles facilmente pelo whatsapp. Levei minhas duas crianças e fui super bem atendida.”</p>
-        <div class="tm-who">
-          <div class="avatar" aria-hidden="true">JO</div>
-          <div>
-            <div class="name">Jéssica Oliveira</div>
-            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
-          </div>
-        </div>
-      </article>
-      <article class="tm-card reveal delay-1">
-        <span class="quote" aria-hidden="true">“</span>
-        <div class="stars" aria-label="5 de 5 estrelas">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-        </div>
-        <p>“Ótimo atendimento, humanizado, com o intuito de resolver nossos problemas.”</p>
-        <div class="tm-who">
-          <div class="avatar" aria-hidden="true">MB</div>
-          <div>
-            <div class="name">Marcelo Brito</div>
-            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
-          </div>
-        </div>
-      </article>
-      <article class="tm-card reveal delay-2">
-        <span class="quote" aria-hidden="true">“</span>
-        <div class="stars" aria-label="5 de 5 estrelas">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-        </div>
-        <p>“Todos muito atenciosos, desde a recepção até os Doutores, estou gostando muito do atendimento.”</p>
-        <div class="tm-who">
-          <div class="avatar" aria-hidden="true">LP</div>
-          <div>
-            <div class="name">Liliani Pereira</div>
-            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="tm-cta reveal">
-      <a href="https://www.google.com/search?q=next+odonto&rlz=1C1UEAD_enBR1086BR1086&oq=next+odonto&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YrwEYxwEYgAQyBwgCEAAYgAQyCAgDEAAYFhgeMggIBBAAGBYYHjIGCAUQRRg8MgYIBhBFGDwyBggHEEUYQdIBCDUyMDJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x94ce653aa1d3b94f:0xfc5ad2eff994a83e,1,,,," target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-        Ver avaliações no Google
-      </a>
     </div>
   </div>
 </section>
@@ -928,13 +823,8 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
         <p>A perda de dentes ou o uso de uma prótese removível pode afetar a alimentação, a autoestima e a rotina. Muitas pessoas deixam de comer certos alimentos, evitam sorrir em fotos ou sentem medo da prótese sair do lugar.</p>
         <p style="margin-top:14px">Com os implantes dentários e a prótese protocolo, é possível avaliar uma solução mais estável, confortável e planejada para o seu caso.</p>
       </div>
-      <div class="pic-stack">
-        <div class="pic pic-main">
-          <img src="assets/dia1.jpeg" alt="Paciente em atendimento odontológico na NextOdonto" loading="lazy"/>
-        </div>
-        <div class="pic pic-secondary">
-          <img src="assets/dia2.jpeg" alt="Dentista conversando com paciente durante a consulta" loading="lazy"/>
-        </div>
+      <div class="pic">
+        <img src="assets/diadia.jpg" alt="Paciente em consulta na NextOdonto" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -943,44 +833,41 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
 <!-- ============== PROTOCOL ============== -->
 <section class="protocol" id="protocolo">
   <div class="container">
-    <div class="reveal" style="max-width: 980px; margin: 0 auto 50px; text-align: center;">
-      <span class="eyebrow"><span class="dot"></span>Prótese protocolo</span>
-      <h2 style="margin-top:20px; color: #fff; font-size: clamp(2rem, 4vw, 3rem);">Prótese protocolo: uma solução fixa para quem usa dentadura ou perdeu muitos dentes</h2>
-    </div>
-
-    <div class="protocol-visual reveal delay-1 reveal-blur" style="margin: 0 auto 50px; max-width: 800px; display: flex; justify-content: center;">
-      <img src="assets/protese1.jpg" alt="Prótese protocolo na NextOdonto" loading="lazy" style="width: 100%; border-radius: 28px;">
-    </div>
-
-    <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-      <p class="lede reveal" style="color: rgba(234,244,251,0.95); font-size: 1.25rem; line-height: 1.6;">A prótese protocolo é fixada sobre implantes dentários e pode ser indicada para pacientes que perderam todos ou quase todos os dentes de uma arcada.</p>
-      <p class="lede reveal delay-1" style="margin-top:24px; color: rgba(234,244,251,0.95); font-size: 1.25rem; line-height: 1.6;">Ela oferece mais estabilidade do que uma dentadura removível e pode trazer mais segurança para mastigar, falar e sorrir.</p>
-    </div>
-
-    <div class="benefits-vertical reveal delay-2" role="list" style="margin: 50px auto; max-width: 700px; display: flex; flex-direction: column; gap: 16px;">
-      <div class="benefit" role="listitem" style="width: 100%; justify-content: center; text-align: center;"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais firmeza no dia a dia</span></div>
-      <div class="benefit" role="listitem" style="width: 100%; justify-content: center; text-align: center;"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais segurança ao mastigar</span></div>
-      <div class="benefit" role="listitem" style="width: 100%; justify-content: center; text-align: center;"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Aparência natural</span></div>
-      <div class="benefit" role="listitem" style="width: 100%; justify-content: center; text-align: center;"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais conforto do que próteses soltas</span></div>
-      <div class="benefit" role="listitem" style="width: 100%; justify-content: center; text-align: center;"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Planejamento personalizado após avaliação</span></div>
-    </div>
-
-    <div class="protocol-cta reveal delay-3" style="justify-content: center; display: flex; margin-top: 40px;">
-      <a href="https://api.whatsapp.com/send?phone=5511940074275&text=Ol%C3%A1,%20vim%20do%20Google%20e%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Implante%20Dent%C3%A1rio" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg btn-pulse">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A10.05 10.05 0 0 0 12 2C6.5 2 2.05 6.45 2.05 11.95c0 1.76.46 3.49 1.34 5.01L2 22l5.18-1.36a10 10 0 0 0 4.81 1.23h.01c5.5 0 9.95-4.45 9.95-9.95 0-2.65-1.04-5.15-2.9-7.01z"/></svg>
-        Quero avaliar se posso fazer protocolo
-      </a>
+    <div class="protocol-grid">
+      <div class="protocol-copy">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="dot"></span>Prótese protocolo</span>
+          <h2 style="margin-top:14px">Prótese protocolo: uma solução fixa para quem usa dentadura ou perdeu muitos dentes</h2>
+        </div>
+        <p class="lede reveal">A prótese protocolo é fixada sobre implantes dentários e pode ser indicada para pacientes que perderam todos ou quase todos os dentes de uma arcada.</p>
+        <p class="lede reveal delay-1" style="margin-top:14px">Ela oferece mais estabilidade do que uma dentadura removível e pode trazer mais segurança para mastigar, falar e sorrir.</p>
+        <div class="benefits" role="list">
+          <div class="benefit reveal delay-1" role="listitem"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais firmeza no dia a dia</span></div>
+          <div class="benefit reveal delay-2" role="listitem"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais segurança ao mastigar</span></div>
+          <div class="benefit reveal delay-2" role="listitem"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Aparência natural</span></div>
+          <div class="benefit reveal delay-3" role="listitem"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mais conforto do que próteses soltas</span></div>
+          <div class="benefit reveal delay-3" role="listitem"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Planejamento personalizado após avaliação</span></div>
+        </div>
+        <div class="protocol-cta reveal delay-3">
+          <a href="https://api.whatsapp.com/send?phone=5511940074275&text=Ol%C3%A1,%20vim%20do%20Google%20e%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Implante%20Dent%C3%A1rio" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A10.05 10.05 0 0 0 12 2C6.5 2 2.05 6.45 2.05 11.95c0 1.76.46 3.49 1.34 5.01L2 22l5.18-1.36a10 10 0 0 0 4.81 1.23h.01c5.5 0 9.95-4.45 9.95-9.95 0-2.65-1.04-5.15-2.9-7.01z"/></svg>
+            Quero avaliar se posso fazer protocolo
+          </a>
+        </div>
+      </div>
+      <div class="protocol-visual reveal delay-2 reveal-blur">
+        <video src="assets/implantes.mp4" controls playsinline preload="metadata" aria-label="Vídeo sobre implantes dentários e prótese protocolo"></video>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============== TREATMENT TABLE ============== -->
-<section class="section treatment-types">
+<section class="section section-soft">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Tipos de tratamento</span>
       <h2>Implante unitário, múltiplo ou protocolo: qual é o ideal?</h2>
-      <p>Uma leitura clara das possibilidades mais comuns para cada necessidade, com apresentação visual mais elegante e objetiva.</p>
     </div>
     <div class="tt-table reveal">
       <div class="tt-row head">
@@ -1089,6 +976,79 @@ footer{background:#0B1A2E;color:#B6C6D8;padding:64px 0 28px;font-size:.93rem}
         <h3>Condições de pagamento personalizadas</h3>
         <p>Possibilidades alinhadas ao seu plano de tratamento.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TESTIMONIALS ============== -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Depoimentos</span>
+      <h2>Pacientes que confiam na NextOdonto</h2>
+      <p>Comentários reais publicados por pacientes da clínica.</p>
+    </div>
+    <div class="tm-track">
+      <article class="tm-card reveal">
+        <span class="quote" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>“Encontrei a Next Odonto no Google, consegui contato com eles facilmente pelo whatsapp. Levei minhas duas crianças e fui super bem atendida.”</p>
+        <div class="tm-who">
+          <div class="avatar" aria-hidden="true">JO</div>
+          <div>
+            <div class="name">Jéssica Oliveira</div>
+            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </article>
+      <article class="tm-card reveal delay-1">
+        <span class="quote" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>“Ótimo atendimento, humanizado, com o intuito de resolver nossos problemas.”</p>
+        <div class="tm-who">
+          <div class="avatar" aria-hidden="true">MB</div>
+          <div>
+            <div class="name">Marcelo Brito</div>
+            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </article>
+      <article class="tm-card reveal delay-2">
+        <span class="quote" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>“Todos muito atenciosos, desde a recepção até os Doutores, estou gostando muito do atendimento.”</p>
+        <div class="tm-who">
+          <div class="avatar" aria-hidden="true">LP</div>
+          <div>
+            <div class="name">Liliani Pereira</div>
+            <div class="src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v3.7h5.35c-.5 2.4-2.5 3.7-5.35 3.7-3.2 0-5.85-2.6-5.85-5.85S8.8 6.8 12 6.8c1.45 0 2.75.5 3.8 1.45l2.65-2.65C16.85 4.05 14.55 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.65 8.6-8.8 0-.6-.05-1.1-.25-1.1z"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="tm-cta reveal">
+      <a href="https://api.whatsapp.com/send?phone=5511940074275&text=Ol%C3%A1,%20vim%20do%20Google%20e%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Implante%20Dent%C3%A1rio" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A10.05 10.05 0 0 0 12 2C6.5 2 2.05 6.45 2.05 11.95c0 1.76.46 3.49 1.34 5.01L2 22l5.18-1.36a10 10 0 0 0 4.81 1.23h.01c5.5 0 9.95-4.45 9.95-9.95 0-2.65-1.04-5.15-2.9-7.01z"/></svg>
+        Também quero agendar minha avaliação
+      </a>
     </div>
   </div>
 </section>
@@ -1251,19 +1211,6 @@ const faqItems = document.querySelectorAll('.faq details');
 faqItems.forEach(d => d.addEventListener('toggle', () => {
   if (d.open) faqItems.forEach(o => { if (o !== d) o.open = false; });
 }));
-
-// Hero Video Mute/Unmute
-const heroVideo = document.getElementById('heroVideo');
-const muteToggle = document.getElementById('muteToggleHero');
-const muteIcon = document.getElementById('muteIcon');
-
-const unmuteSvg = '<path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
-const muteSvg = '<path d="M11 5L6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
-
-muteToggle.addEventListener('click', () => {
-  heroVideo.muted = !heroVideo.muted;
-  muteIcon.innerHTML = heroVideo.muted ? muteSvg : unmuteSvg;
-});
 </script>
 
 </body>
